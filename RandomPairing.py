@@ -1,99 +1,116 @@
 import random
 
-def randomGarcia(names, gifter, used, i):
-    exclusion = [11, 12, 13, 14, 15, 16, 17] + used  # Combine fixed exclusions and used list
-    count = 0  # Reset count for each call
+all_names = [
+    "Noah", "Raya", "Nathan", "Gwen", "Elizabeth", "Kirk", "Andrea", 
+    "Grandma", "Grandpa", "Janell",
+    "LaDona", "Nick", "Ezra", "Shayla", "Trinidad", "Mackenzie", "Krya", "Landon" 
+]
 
-    while count != 1:
-        randomGifter = random.randint(0, len(names) - 1)  # 0-based index
-        if randomGifter not in exclusion:
-            gifter[i - 1] = f"{gifter[i - 1]} --> {names[randomGifter]}"
-            used.append(randomGifter)
-            count = 1
+display_names = [
+    "Grandma", "Grandpa", "Janell",
+    "LaDona", "Nick", "Ezra", "Shayla", "Trinidad", "Mackenzie", "Krya", "Landon",
+    "Kirk", "Andrea", "Noah", "Raya", "Nathan", "Elizabeth", "Gwen"
+]
 
-    return gifter, used
+LAST_YEAR_PAIRS = {
+    # "Giver": "LastYearGiftee"
+    "Noah": "Janell",
+    "Raya": "Trinidad",
+    "Nathan" : "Grandpa",
+    "Gwen" : "Grandma",
+    "Elizabeth" : "Mackenzie",
+    "Kirk" : "LaDona",
+    "Andrea" : "Ezra",
+    "LaDona": "Raya",
+    "Nick": "Kirk",
+    "Ezra" : "",
+    "Shayla" : "Gwen",
+    "Trinidad" : "Andrea",
+    "Mackenzie" : "Noah",
+    "Kyra": "Elizabeth",
+    "Landon": "",
+    "Grandma" : "Nick",
+    "Grandpa" : "Nathan",
+    "Janell" : "Shayla",
 
+}
 
-def randomAshworth(names,gifter,used,i):
-    exclusion = [0,1,2,3,4,5,6,7] + used  
-    count = 0
+def generate_pairs(names, last_year_pairs, extra_forbidden):
 
-    while count != 1:
-        randomGifter = random.randint(0, len(names) - 1)  
-        if randomGifter not in exclusion:
-            gifter[i - 1] = f"{gifter[i - 1]} --> {names[randomGifter]}"
-            used.append(randomGifter)
-            count = 1
+    if extra_forbidden is None:
+        extra_forbidden = {}
 
-    return gifter, used
+    while True:  # keep trying until we find a valid assignment
+        remaining = names[:]          # recipients still available
+        random.shuffle(remaining)     # randomize recipient order
+        pairs = {}
+        success = True
 
+        # You can also sort 'names' by number of constraints if things ever get tight
+        for giver in names:
+            forbidden = set()
+            forbidden.add(giver)  # can't get yourself
 
-def randomHaskins(names,gifter,used,i):
-    exclusion = [8,9] + used
-    count = 0
-    
-    while count != 1:
-        randomGifter = random.randint(0, len(names) - 1)  
-        if randomGifter not in exclusion:
-            gifter[i - 1] = f"{gifter[i - 1]} --> {names[randomGifter]}"
-            used.append(randomGifter)
-            count = 1
+            # can't get last year's person
+            if giver in last_year_pairs:
+                forbidden.add(last_year_pairs[giver])
 
-    return gifter, used
-            
+            # any extra forbidden people (e.g., same household)
+            forbidden |= set(extra_forbidden.get(giver, []))
+
+            # valid choices from what's left
+            candidates = [r for r in remaining if r not in forbidden]
+
+            if not candidates:
+                # dead end → restart whole assignment
+                success = False
+                break
+
+            recipient = random.choice(candidates)
+            pairs[giver] = recipient
+            remaining.remove(recipient)
+
+        if success and len(pairs) == len(names):
+            return pairs
 
 def main():
-    # Names
-    one = "Noah"
-    two = "Raya"
-    three = "Nathan"
-    four = "Lauryn"
-    five = "Gwen"
-    six = "Elizabeth"
-    seven = "Kirk"
-    eight = "Andrea"
-    nine = "Grandma"
-    ten = "Grandpa"
-    eleven = "Janell"
-    twelve = "LaDona"
-    thirteen = "Nick"
-    fourteen = "Ezra"
-    fifteen = "Shayla"
-    sixteen = "Trinidad"
-    seventeen = "Mackenzie"
-    eighteen = "Krya"
+    extra_forbidden = {
+        # Ashworth Family
+        "Noah": {"Raya", "Nathan", "Gwen", "Elizabeth", "Kirk", "Andrea"},
+        "Raya": {"Noah", "Nathan", "Gwen", "Elizabeth", "Kirk", "Andrea"},
+        "Nathan": {"Noah", "Raya", "Gwen", "Elizabeth", "Kirk", "Andrea"},
+        "Gwen": {"Noah", "Raya", "Nathan", "Elizabeth", "Kirk", "Andrea"},
+        "Elizabeth": {"Noah", "Raya", "Nathan", "Gwen",  "Kirk", "Andrea"},
+        "Kirk": {"Noah", "Raya", "Nathan", "Gwen", "Elizabeth", "Andrea"},
+        "Andrea": {"Noah", "Raya", "Nathan", "Gwen", "Elizabeth", "Kirk"},
 
-    # Family groups
-    garcias = [twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen]
-    ashworth = [one, two, three, four, five, six, seven, eight]
+        #Garcia Family
+        "LaDona" : {"Nick", "Ezra", "Shayla", "Trinidad", "Mackenzie", "Krya", "Landon"},
+        "Nick" : {"LaDona", "Ezra", "Shayla", "Trinidad", "Mackenzie", "Krya", "Landon"},
+        "Ezra" : {"LaDona", "Nick", "Shayla", "Trinidad", "Mackenzie", "Krya", "Landon"},
+        "Shayla" : {"LaDona", "Nick", "Ezra", "Trinidad", "Mackenzie", "Krya", "Landon"},
+        "Trinidad" : {"LaDona", "Nick", "Ezra", "Shayla", "Mackenzie", "Krya", "Landon"},
+        "Mackenzie" : {"LaDona", "Nick", "Ezra", "Shayla", "Trinidad", "Krya", "Landon"},
+        "Kyra" : {"LaDona", "Nick", "Ezra", "Shayla", "Trinidad", "Mackenzie", "Landon"},
+        "Landon" : {"LaDona", "Nick", "Ezra", "Shayla", "Trinidad", "Mackenzie", "Krya"},
 
-    # Couples
-    couples = [[one, two],[three, four],[seven, eight],[nine, ten],[twelve, thirteen],[sixteen, seventeen]]
+        #GrandParents
+        "Grandma" : {"Grandpa"},
+        "Grandpa" : {"Grandma"}
 
-    # Combine all participants
-    all_names = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen]
-    all_gifter = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen]
-    
-    # count of used numbers
-    used= []
+    }
 
-    #pairing the Haskins
-    
-    for i in range(1,9):
-        all_gifter,used = randomAshworth(all_names,all_gifter,used,i)
+    pairs = generate_pairs(all_names, LAST_YEAR_PAIRS, extra_forbidden)
 
-    for i in range(12,19):
-        all_gifter,used = randomGarcia(all_names,all_gifter,used,i)
-
-    for i in range(9,12):
-        all_gifter,used = randomHaskins(all_names,all_gifter,used,i)
-
-
-    # Write pairs to a text file
-    with open("names.txt", "w") as file:
-        for i in range(0,len(all_gifter)):
-            file.write(all_gifter[i]+ "\n")
+    # Write out in your desired display order
+    with open("names.txt", "w") as f:
+        for giver in display_names:
+            giftee = pairs[giver]
+            f.write(f"{giver} --> {giftee}\n")
 
     print("Secret Santa pairs have been written to 'names.txt'.")
 
-main()
+
+if __name__ == "__main__":
+    main()
+    
