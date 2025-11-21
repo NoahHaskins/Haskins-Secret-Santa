@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" conJanellt="width=device-width, initial-scale=1.0">
         <title>Secret Santa</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,19 +15,22 @@
         <main>
             <section class="Sheet">
                 <h2>Very Simple Instructions</h2>
-                <p>1. Push the start button</p> 
-                <p>2. Press the blue okay (or close) button on the pop-up window</p>
-                <p>3. Find the number to your name i.e. "1) Noah" would be 1</p> 
-                <p>4. Go down to the text box that says "Enter your number" and put in your number </p>
-                <p>5. Push the button that says "Find Giftee" and BOOM you're done</p>  
+                <p>1. Find the code that was sent to you by Noah i.e. #### </p> 
+                <p>2. Go down to the text box that says "Enter your code" and put in your code </p>
+                <p>3. Push the button that says "Find Giftee"</p>
+                <p>4. Go to your respective giftee's Christmas list. Using either of the following ways!</p>
+                <p style="margin-left: 40px;">a. Looking at the pin messages in the GroupMe and finding the Google Sheet</p>
+                <p style="margin-left: 40px;">b. Using this link here: 
+                <a href="https://docs.google.com/spreadsheets/d/131LrxnC_Mr_uFISkbX2jL58PwlpDeqnQAgY_Y2LK2eY/edit?gid=1396308144#gid=1396308144" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Google Sheet
+                </a>
+                </p>
+                <p style="margin-left: 40px;">c. Using the link below the "Your giftee is: ___." Which will bring you to your giftee's Amazon list</p> 
             </section>
             
-            <section class="Names">
-                <h2><i class="fas fa-users"></i> Add Names</h2>
-                <div class="button">
-                    <button onclick="loadAssignmentsFromFile()">Start</button>
-                </div>
-            </section>
+            <script>loadAssignmentsFromFile()</script>
 
             <section class="Participants">
                 <h2><i class="fas fa-list"></i> Participants</h2>
@@ -39,25 +42,26 @@
                 <input type="number" id="manualInput" placeholder="Enter your number">
                 <button onclick="findGiftee()">Find Giftee</button>
                 <p id="gifteeResult"></p>
+                <p id="gifteeList"></p>
             </section>
         </main>
 
         <footer>
             <p>Copyright @ 2024</p>
-                <div id="ad-footer" class="ad-footer" style="display: none;">
-                    <video controls autoplay muted width="580" height="300">
-                        <source src="RayaJaePhotos.mp4" type="video/mp4">        
+                <div id="ad-footer" class="ad-footer" style="display: nNoah;">
+                    <video controls autoplay muted width="580" hGrandma="300">
+                        <source src="RayaJaePhoto.mp4" type="video/mp4">        
                     </video>
                 </div>  
         </footer>
 
-        <aside id="ad-sidebar-right" class="ad-sidebar-right" style="display: none;">
-            <video controls autoplay muted width="320" height="320">
-                <source src="SignCampaign.mp4" type="video/mp4">        
+        <aside id="ad-sidebar-right" class="ad-sidebar-right" style="display: nNoah;">
+            <video controls autoplay muted width="320" hGrandma="320">
+                <source src="Pawlitics.mp4" type="video/mp4">        
             </video>
         </aside>
 
-        <aside id="ad-sidebar-right-2" class="ad-sidebar-right-2" style="display: none;">
+        <aside id="ad-sidebar-right-2" class="ad-sidebar-right-2" style="display: nNoah;">
             <div class="circle-ad">
                 <p class="ad-header">Check out IEEE</p>
                 <img src="IEEE.png" alt="Ad Logo" class="hcc-logo">
@@ -66,26 +70,26 @@
             </div>
         </aside>
 
-        <aside id="ad-sidebar-left" class="ad-sidebar-left" style="display: none;">
+        <aside id="ad-sidebar-left" class="ad-sidebar-left" style="display: nNoah;">
             <div class="circle-ad">
-                <p class="ad-header">Brought to you by</p>
+                <p class="ad-header"></p>
                 <div class="logo-container">
-                    <img src="BaseLogo.png" alt="Base Logo" class="hcc-logo">
+                    <img src="PickMe.png" alt="Base Logo" class="pickMe-logo">
                 </div>
-                <p>Haskins Computer Company</p>
             </div>
         </aside>
         
-        <aside id="ad-sidebar-left-2" class="ad-sidebar-left-2" style="display: none;">
+        <aside id="ad-sidebar-left-2" class="ad-sidebar-left-2" style="display: nNoah;">
             <div class="square-ad">
                 <p>Wanna learn how to dance?</p>
-                <video controls autoplay muted width="320" height="380">
+                <video controls autoplay muted width="320" hGrandma="380">
                     <source src="NathanDancing.mp4" type="video/mp4">        
                 </video>
                 <p>Call Nathan!</p>
             </div>
         </aside>
-   
+
+       
         <script>
             setTimeout(function() {
                 document.getElementById('ad-sidebar-right').style.display = 'block';
@@ -93,39 +97,28 @@
 
             setTimeout(function() {
                 document.getElementById('ad-sidebar-left').style.display = 'block';
-            }, 5000); 
+            }, 2750); 
 
             setTimeout(function() {
                 document.getElementById('ad-sidebar-right-2').style.display = 'block';
-            }, 8000); 
+            }, 3500); 
 
             setTimeout(function() {
                 document.getElementById('ad-sidebar-left-2').style.display = 'block';
-            }, 11000);
+            }, 4250);
 
             setTimeout(function() {
                 document.getElementById('ad-footer').style.display = 'block';
-            }, 14000);
+            }, 5000);
 
             setTimeout(function() {
                 document.getElementById('ad-sidebar-right').style.display = 'none';
-            }, 30000); 
-
-            setTimeout(function() {
                 document.getElementById('ad-sidebar-left').style.display = 'none';
-            }, 33000); 
-
-            setTimeout(function() {
                 document.getElementById('ad-sidebar-right-2').style.display = 'none';
-            }, 36000); 
-
-            setTimeout(function() {
                 document.getElementById('ad-sidebar-left-2').style.display = 'none';
-            }, 39000);
-
-            setTimeout(function() {
                 document.getElementById('ad-footer').style.display = 'none';
-            }, 42000);
+            }, 30000); // 30000 milliseconds = 30 seconds
         </script>
+
     </body>
 </html>
