@@ -24,7 +24,7 @@ const gifteeLinks = {
     "Kirk": "",
     "Andrea": "",
     "Elizabeth": "",
-    "Noah": "https://www.amazon.com/hz/wishlist/ls/BSPKNIV53QMR?ref_=wl_share",
+    "Noah": "https://www.amazon.com/hz/wishlist/ls/EKMT0LZNA4NB?ref_=wl_share",
     "Raya": "",
     "Nathan": "",
     "Gwen": "https://www.amazon.com/hz/wishlist/ls/I1ETWW5Y8Z9K?ref_=wl_share",
@@ -133,3 +133,4 @@ function parseAssignments(content) {
 
     displayNames();
 }
+
