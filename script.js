@@ -21,21 +21,21 @@ const gifteeLinks = {
     "Grandpa" : "",
     "Grandma": "",
     //Ashworth
-    "Kirk": "",
-    "Andrea": "",
-    "Elizabeth": "",
+    "Kirk": "https://www.amazon.com/hz/wishlist/ls/5VSEWEWQUIS8?ref_=wl_share",
+    "Andrea": "https://www.amazon.com/hz/wishlist/ls/2BAMBFK9FQ0TX?ref_=wl_share",
+    "Elizabeth": "https://www.amazon.com/hz/wishlist/ls/2CKPEKWSTY4W8?ref_=wl_share",
     "Noah": "https://www.amazon.com/hz/wishlist/ls/EKMT0LZNA4NB?ref_=wl_share",
-    "Raya": "",
-    "Nathan": "",
+    "Raya": "https://www.amazon.com/hz/wishlist/ls/3M4CUCEBEXKI1?ref_=wl_share",
+    "Nathan": "https://www.amazon.com/hz/wishlist/ls/2US6G3ZDP07CM?ref_=wl_share",
     "Gwen": "https://www.amazon.com/hz/wishlist/ls/I1ETWW5Y8Z9K?ref_=wl_share",
     //Garcia
-    "LaDona": "",
-    "Nick": "",
-    "Ezra": "",
-    "Shayla": "",
-    "Trinidad": "",
-    "Mackenzie": "",
-    "Krya": "",
+    "LaDona": "https://www.amazon.com/hz/wishlist/ls/33SH492P9N4XT?ref_=wl_share",
+    "Nick": "https://www.amazon.com/hz/wishlist/ls/2QSW0VVWH0E1I?ref_=wl_share",
+    "Ezra": "https://www.amazon.com/hz/wishlist/ls/3VNDUZSZNVSOI?ref_=wl_share",
+    "Shayla": "https://www.amazon.com/hz/wishlist/ls/3D39LTOGW0K6K?type=wishlist",
+    "Trinidad": "https://www.amazon.com/hz/wishlist/ls/17GFSTA1KUFAL?ref=cm_sw_sm_r_un_un_KDt8FgbNGmjI2",
+    "Mackenzie": "https://www.amazon.com/hz/wishlist/ls/2LFIQEZK8WIZM?ref=cm_sw_sm_r_un_un_RvkiPFLO0kLac",
+    "Krya": "https://www.amazon.com/hz/wishlist/ls/16F9ZH40LT4R8?ref_=wl_share",
     "Landon": ""
 };
 
@@ -133,4 +133,5 @@ function parseAssignments(content) {
 
     displayNames();
 }
+
 
