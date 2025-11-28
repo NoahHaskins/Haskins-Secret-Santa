@@ -35,8 +35,8 @@ const gifteeLinks = {
     "Shayla": "https://www.amazon.com/hz/wishlist/ls/3D39LTOGW0K6K?type=wishlist",
     "Trinidad": "https://www.amazon.com/hz/wishlist/ls/17GFSTA1KUFAL?ref=cm_sw_sm_r_un_un_KDt8FgbNGmjI2",
     "Mackenzie": "https://www.amazon.com/hz/wishlist/ls/2LFIQEZK8WIZM?ref=cm_sw_sm_r_un_un_RvkiPFLO0kLac",
-    "Krya": "https://www.amazon.com/hz/wishlist/ls/16F9ZH40LT4R8?ref_=wl_share",
-    "Landon": ""
+    "Krya": "https://www.amazon.com/hz/wishlist/ls/TSALHVZTKSKX?ref_=wl_share",
+    "Landon": "https://www.amazon.com/hz/wishlist/ls/WKQZNZEU5QJG?ref_=wl_share"
 };
 
 // Map code strings directly to their participant number (1-based)
@@ -133,6 +133,7 @@ function parseAssignments(content) {
 
     displayNames();
 }
+
 
 
 
