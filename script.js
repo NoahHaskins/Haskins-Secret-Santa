@@ -19,7 +19,7 @@ const gifteeLinks = {
     "Janell" : "https://www.amazon.com/hz/wishlist/ls/EQDZ8HBJKA3Y?ref=cm_sw_sm_r_un_un_Coqf9zkFtbkZM",
     //Grandparents
     "Grandpa" : "https://www.amazon.com/hz/wishlist/ls/3S2LUJYN35W6Y?ref_=wl_fv_le",
-    "Grandma": "",
+    "Grandma": "https://docs.google.com/document/d/12y8Z5Q3L_J5vJmuY82WhAycDZKCcLi5VLAwCklYNjVQ/edit?usp=sharing",
     //Ashworth
     "Kirk": "https://www.amazon.com/hz/wishlist/ls/5VSEWEWQUIS8?ref_=wl_share",
     "Andrea": "https://www.amazon.com/hz/wishlist/ls/2BAMBFK9FQ0TX?ref_=wl_share",
@@ -133,6 +133,7 @@ function parseAssignments(content) {
 
     displayNames();
 }
+
 
 
 
